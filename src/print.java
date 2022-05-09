@@ -5,7 +5,7 @@ import java.util.List;
 
 public class print {
 
-    static void print(List<Integer> arguments){
+    static void fileprint(List<Integer> arguments){
 
         int supply = arguments.get(0);
         int buy = arguments.get(1);

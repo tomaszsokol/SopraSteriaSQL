@@ -8,6 +8,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        //This program reads database of daily shop operations and creates a report of supplied/sold items in the shop.
+
         int supply = 0;
         int buy = 0;
         int result;
@@ -15,11 +17,18 @@ public class Main {
         Connection c;
         Statement statement;
 
+        /*To make this program work you need to import sopra.sql database into your RDBMS(I used PostgreSQL)
+        and define Database Driver, address, username and password. You will also need JDBC interface
+         */
+        String driver = "";
+        String url = "";
+        String user = "";
+        String pswd = "";
+
         try{
-            Class.forName("org.postgresql.Driver");
+            Class.forName(driver);
             c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/sopra",
-                            "postgres","123456");
+                    .getConnection(url, user, pswd);
             c.setAutoCommit(false);
 
             statement = c.createStatement();
@@ -47,6 +56,6 @@ public class Main {
         List<Integer> list = Arrays.asList(supply, buy, result);
 
         print pr = new print();
-        pr.print(list);
+        pr.fileprint(list);
     }
 }
